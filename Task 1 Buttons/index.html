@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons</title>
+    <style>
+        /* Styles to set display to flex, change direction, align to start */
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Added three buttons with numbers -->
+    <section class="section">
+        <button class="section_button">1</button>
+        <button class="section_button">2</button>
+        <button class="section_button">3</button>
+    </section>
+
+    <!-- Include JQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // The script is waiting for the full load of the DOM
+        $(document).ready(function () {
+            // container "section" contains the buttons
+            var container = $("section");
+            
+            // The nethod children selects all buttons, and adds a click event listener for each one
+            container.children("button").each(function () {
+                // On click:
+                    // an element is inserted an the beginning of the list
+                    // element is the original list without the first element
+                $(this).on("click", function () {
+                    container.prepend(container.children("button").splice(1));
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>
